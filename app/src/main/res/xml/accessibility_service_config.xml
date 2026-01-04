@@ -6,6 +6,6 @@
     android:accessibilityFeedbackType="feedbackAllMask"
     android:notificationTimeout="100"
     android:settingsActivity="com.skythinker.gptassistant.TabConfActivity"
-    android:canRetrieveWindowContent="false"
+    android:canRetrieveWindowContent="true"
     android:canRequestFilterKeyEvents="true"
     android:accessibilityFlags="flagRequestFilterKeyEvents"/>

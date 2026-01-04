@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Base64;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.unfbx.chatgpt.entity.assistant.Tool;
@@ -292,6 +293,29 @@ public class ChatManager{
                 }
             }
             return msg;
+        }
+
+        @NonNull
+        public ChatMessage clone() {
+            ChatMessage clone = new ChatMessage(this.role);
+            clone.contentText = this.contentText;
+            for(Attachment attachment : this.attachments) {
+                Attachment newAttachment = new Attachment();
+                newAttachment.uuid = attachment.uuid;
+                newAttachment.type = attachment.type;
+                newAttachment.name = attachment.name;
+                newAttachment.content = attachment.content;
+                clone.attachments.add(newAttachment);
+            }
+            for(ToolCall toolCall : this.toolCalls) {
+                ToolCall newToolCall = new ToolCall();
+                newToolCall.id = toolCall.id;
+                newToolCall.functionName = toolCall.functionName;
+                newToolCall.arguments = toolCall.arguments;
+                newToolCall.content = toolCall.content;
+                clone.toolCalls.add(newToolCall);
+            }
+            return clone;
         }
     }
 

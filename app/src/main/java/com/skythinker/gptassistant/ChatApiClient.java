@@ -265,7 +265,7 @@ public class ChatApiClient {
                         listener.onFunctionCall(callingFunctions);
                     }
                 } else { // 正在回复
-                    Log.d("ChatApiClient", "onEvent: " + data);
+//                    Log.d("ChatApiClient", "onEvent: " + data);
                     JSONObject json = new JSONObject(data);
                     if(json.containsKey("choices") && json.getJSONArray("choices").size() > 0) {
                         JSONObject delta = ((JSONObject) json.getJSONArray("choices").get(0)).getJSONObject("delta");
