@@ -1,4 +1,4 @@
-package com.skythinker.gptassistant;
+package com.skythinker.gptassistant.data;
 
 import java.io.Serializable;
 import java.util.Arrays;

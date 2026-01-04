@@ -1,4 +1,4 @@
-package com.skythinker.gptassistant;
+package com.skythinker.gptassistant.data;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;

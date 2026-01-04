@@ -1,4 +1,4 @@
-package com.skythinker.gptassistant;
+package com.skythinker.gptassistant.ui;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,6 +32,12 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.skythinker.gptassistant.BuildConfig;
+import com.skythinker.gptassistant.data.GlobalDataHolder;
+import com.skythinker.gptassistant.tool.GlobalUtils;
+import com.skythinker.gptassistant.data.PromptTabData;
+import com.skythinker.gptassistant.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

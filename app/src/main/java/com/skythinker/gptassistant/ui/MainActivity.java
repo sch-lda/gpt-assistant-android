@@ -1,4 +1,4 @@
-package com.skythinker.gptassistant;
+package com.skythinker.gptassistant.ui;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -77,10 +77,26 @@ import cn.hutool.json.JSONException;
 import cn.hutool.json.JSONObject;
 import io.noties.prism4j.annotations.PrismBundle;
 
-import com.skythinker.gptassistant.ChatManager.ChatMessage.ChatRole;
-import com.skythinker.gptassistant.ChatManager.ChatMessage;
-import com.skythinker.gptassistant.ChatManager.MessageList;
-import com.skythinker.gptassistant.ChatManager.Conversation;
+import com.skythinker.gptassistant.BuildConfig;
+import com.skythinker.gptassistant.data.ChatManager;
+import com.skythinker.gptassistant.data.ChatManager.ChatMessage.ChatRole;
+import com.skythinker.gptassistant.data.ChatManager.ChatMessage;
+import com.skythinker.gptassistant.data.ChatManager.MessageList;
+import com.skythinker.gptassistant.data.ChatManager.Conversation;
+import com.skythinker.gptassistant.tool.DocumentParser;
+import com.skythinker.gptassistant.data.GlobalDataHolder;
+import com.skythinker.gptassistant.tool.GlobalUtils;
+import com.skythinker.gptassistant.tool.MarkdownRenderer;
+import com.skythinker.gptassistant.service.MyAccessbilityService;
+import com.skythinker.gptassistant.data.PromptTabData;
+import com.skythinker.gptassistant.R;
+import com.skythinker.gptassistant.tool.WebScraper;
+import com.skythinker.gptassistant.api.ChatApiClient;
+import com.skythinker.gptassistant.asr.AsrClientBase;
+import com.skythinker.gptassistant.asr.BaiduAsrClient;
+import com.skythinker.gptassistant.asr.GoogleAsrClient;
+import com.skythinker.gptassistant.asr.HmsAsrClient;
+import com.skythinker.gptassistant.asr.WhisperAsrClient;
 
 @SuppressLint({"UseCompatLoadingForDrawables", "JavascriptInterface", "SetTextI18n"})
 @PrismBundle(includeAll = true)

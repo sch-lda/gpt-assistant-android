@@ -1,4 +1,4 @@
-package com.skythinker.gptassistant;
+package com.skythinker.gptassistant.asr;
 
 public abstract class AsrClientBase {
     public interface IAsrCallback {

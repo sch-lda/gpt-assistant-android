@@ -1,6 +1,5 @@
-package com.skythinker.gptassistant;
+package com.skythinker.gptassistant.ui;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,13 +11,14 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.ValueCallback;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.skythinker.gptassistant.tool.GlobalUtils;
+import com.skythinker.gptassistant.R;
 
 public class WebViewActivity extends Activity {
 

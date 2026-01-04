@@ -1,6 +1,5 @@
-package com.skythinker.gptassistant;
+package com.skythinker.gptassistant.asr;
 
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +8,9 @@ import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.util.Log;
-import android.widget.Toast;
+
+import com.skythinker.gptassistant.ui.ConfirmDialog;
+import com.skythinker.gptassistant.R;
 
 import java.util.ArrayList;
 import java.util.Locale;

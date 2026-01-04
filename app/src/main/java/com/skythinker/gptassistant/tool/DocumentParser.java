@@ -1,4 +1,4 @@
-package com.skythinker.gptassistant;
+package com.skythinker.gptassistant.tool;
 
 import android.content.Context;
 import android.database.Cursor;

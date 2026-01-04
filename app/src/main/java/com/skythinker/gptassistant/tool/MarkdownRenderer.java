@@ -1,4 +1,4 @@
-package com.skythinker.gptassistant;
+package com.skythinker.gptassistant.tool;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -16,8 +16,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.skythinker.gptassistant.R;
+import com.skythinker.gptassistant.ui.GrammarLocatorDef;
+
 import org.commonmark.node.FencedCodeBlock;
-import org.commonmark.node.Image;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,11 +30,9 @@ import io.noties.markwon.LinkResolver;
 import io.noties.markwon.Markwon;
 import io.noties.markwon.MarkwonConfiguration;
 import io.noties.markwon.MarkwonSpansFactory;
-import io.noties.markwon.core.spans.LinkSpan;
 import io.noties.markwon.ext.latex.JLatexMathPlugin;
 import io.noties.markwon.ext.tables.TableAwareMovementMethod;
 import io.noties.markwon.ext.tables.TablePlugin;
-import io.noties.markwon.image.ImageProps;
 import io.noties.markwon.image.ImageSize;
 import io.noties.markwon.image.ImageSizeResolverDef;
 import io.noties.markwon.image.ImagesPlugin;

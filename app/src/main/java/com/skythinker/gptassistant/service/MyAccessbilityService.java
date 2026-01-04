@@ -1,11 +1,7 @@
-package com.skythinker.gptassistant;
+package com.skythinker.gptassistant.service;
 
 import android.accessibilityservice.AccessibilityService;
-import android.app.ActivityManager;
-import android.app.PendingIntent;
 import android.app.Service;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
@@ -17,6 +13,8 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import com.skythinker.gptassistant.ui.MainActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -189,7 +187,7 @@ public class MyAccessbilityService extends AccessibilityService {
     private boolean isInStartDelay = false;
     AudioManager audioManager;
     Vibrator vibrator;
-    WidgetNode rootWidgetNode;
+    public WidgetNode rootWidgetNode;
     public static MyAccessbilityService staticThis;
 
     final private int longPressTime = 500; // 长按判定时间

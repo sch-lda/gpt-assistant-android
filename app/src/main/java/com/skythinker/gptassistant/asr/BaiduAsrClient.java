@@ -1,4 +1,4 @@
-package com.skythinker.gptassistant;
+package com.skythinker.gptassistant.asr;
 
 import android.content.Context;
 import android.util.Log;
@@ -7,6 +7,7 @@ import com.baidu.speech.EventListener;
 import com.baidu.speech.EventManager;
 import com.baidu.speech.EventManagerFactory;
 import com.baidu.speech.asr.SpeechConstant;
+import com.skythinker.gptassistant.data.GlobalDataHolder;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,4 +1,4 @@
-package com.skythinker.gptassistant;
+package com.skythinker.gptassistant.ui;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -6,6 +6,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+
+import com.skythinker.gptassistant.tool.MarkdownRenderer;
+import com.skythinker.gptassistant.R;
 
 public class ConfirmDialog{
     Dialog dialog;

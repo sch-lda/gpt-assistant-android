@@ -1,9 +1,12 @@
-package com.skythinker.gptassistant;
+package com.skythinker.gptassistant.data;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Base64;
 import android.util.Log;
+
+import com.skythinker.gptassistant.BuildConfig;
+import com.skythinker.gptassistant.R;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

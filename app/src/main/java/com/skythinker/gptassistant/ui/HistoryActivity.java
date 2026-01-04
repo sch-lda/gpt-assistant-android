@@ -1,4 +1,4 @@
-package com.skythinker.gptassistant;
+package com.skythinker.gptassistant.ui;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -22,9 +22,10 @@ import android.widget.TextView;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import com.google.android.material.internal.TextWatcherAdapter;
-import com.skythinker.gptassistant.ChatManager.Conversation;
-import com.skythinker.gptassistant.ChatManager.ChatMessage;
+import com.skythinker.gptassistant.data.ChatManager;
+import com.skythinker.gptassistant.data.ChatManager.Conversation;
+import com.skythinker.gptassistant.data.ChatManager.ChatMessage;
+import com.skythinker.gptassistant.R;
 
 public class HistoryActivity extends Activity {
 

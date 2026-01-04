@@ -1,4 +1,4 @@
-package com.skythinker.gptassistant;
+package com.skythinker.gptassistant.ui;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,10 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.skythinker.gptassistant.tool.GlobalUtils;
+import com.skythinker.gptassistant.tool.MarkdownRenderer;
+import com.skythinker.gptassistant.R;
 
 import java.io.IOException;
 
