@@ -86,6 +86,21 @@ public class GlobalDataHolder {
         }
     }
 
+    static class TabDataInputStream extends ObjectInputStream {
+        public TabDataInputStream(ByteArrayInputStream bais) throws IOException {
+            super(bais);
+        }
+
+        @Override
+        protected Class<?> resolveClass(java.io.ObjectStreamClass desc) throws IOException, ClassNotFoundException {
+            if (desc.getName().equals("com.skythinker.gptassistant.PromptTabData")) { // old package name
+                Log.d("GlobalDataHolder", "resolved old PromptTabData class");
+                return PromptTabData.class;
+            }
+            return super.resolveClass(desc);
+        }
+    }
+
     public static void loadTabDataList() {
         String base64 = sp.getString("tab_data_list", "");
         if (base64.equals("")) {
@@ -95,7 +110,7 @@ public class GlobalDataHolder {
         byte[] bytes = Base64.decode(base64, Base64.DEFAULT);
         try {
             ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
-            tabDataList = (List<PromptTabData>) (new ObjectInputStream(bais).readObject());
+            tabDataList = (List<PromptTabData>) (new TabDataInputStream(bais).readObject());
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
