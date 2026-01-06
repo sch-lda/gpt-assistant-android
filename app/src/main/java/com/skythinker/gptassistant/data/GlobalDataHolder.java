@@ -42,6 +42,7 @@ public class GlobalDataHolder {
     private static boolean limitVisionSize;
     private static boolean autoSaveHistory;
     private static boolean useGitee;
+    private static boolean agentMode;
     private static String latestVersion;
     private static SharedPreferences sp = null;
 
@@ -64,6 +65,7 @@ public class GlobalDataHolder {
         loadVisionSetting();
         loadHistorySetting();
         loadOnlineResourceSetting();
+        loadAgentModeSetting();
         loadUpdateSetting();
     }
 
@@ -279,6 +281,17 @@ public class GlobalDataHolder {
         editor.apply();
     }
 
+    public static void loadAgentModeSetting() {
+        agentMode = sp.getBoolean("agent_mode", true);
+    }
+
+    public static void saveAgentModeSetting(boolean enabled) {
+        agentMode = enabled;
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean("agent_mode", agentMode);
+        editor.apply();
+    }
+
     public static void loadUpdateSetting() {
         latestVersion = sp.getString("latest_version", BuildConfig.VERSION_NAME);
     }
@@ -333,6 +346,8 @@ public class GlobalDataHolder {
     public static boolean getAutoSaveHistory() { return autoSaveHistory; }
 
     public static boolean getUseGitee() { return useGitee; }
+
+    public static boolean getAgentMode() { return agentMode; }
 
     public static String getLatestVersion() { return latestVersion; }
 }

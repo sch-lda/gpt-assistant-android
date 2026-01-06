@@ -83,6 +83,7 @@ import com.skythinker.gptassistant.data.ChatManager.ChatMessage.ChatRole;
 import com.skythinker.gptassistant.data.ChatManager.ChatMessage;
 import com.skythinker.gptassistant.data.ChatManager.MessageList;
 import com.skythinker.gptassistant.data.ChatManager.Conversation;
+import com.skythinker.gptassistant.service.AgentAccessibilityService;
 import com.skythinker.gptassistant.tool.DocumentParser;
 import com.skythinker.gptassistant.data.GlobalDataHolder;
 import com.skythinker.gptassistant.tool.GlobalUtils;
@@ -133,6 +134,8 @@ public class MainActivity extends Activity {
 
     private boolean multiVoice = false;
 
+    private boolean agentMode = false;
+
     private JSONObject currentTemplateParams = null; // 当前模板参数
 
     AsrClientBase asrClient = null;
@@ -156,6 +159,7 @@ public class MainActivity extends Activity {
             public void uncaughtException(@NonNull Thread thread, @NonNull Throwable throwable) {
                 Log.e("UncaughtException", thread.getClass().getName() + " " + throwable.getMessage());
                 throwable.printStackTrace();
+//                GlobalUtils.copyToClipboard(MainActivity.this, Log.getStackTraceString(throwable));
                 System.exit(-1);
             }
         });
@@ -399,11 +403,11 @@ public class MainActivity extends Activity {
                                 processFunctionResult(function, "Error when getting response.");
                             }
                         }else if (function.name.equals("get_widget_tree")) {
-                            if(MyAccessbilityService.isConnected()) {
+                            if(AgentAccessibilityService.isConnected()) {
                                 moveTaskToBack(true); // 最小化当前窗口
                                 handler.postDelayed(() -> {
-                                    JSONObject json = MyAccessbilityService.staticThis.getWidgetJson();
-                                    json.putOpt("package", MyAccessbilityService.staticThis.getCurrentPackageName());
+                                    JSONObject json = AgentAccessibilityService.staticThis.getWidgetJson();
+                                    json.putOpt("package", AgentAccessibilityService.staticThis.getCurrentPackageName());
                                     Intent intent = new Intent(MainActivity.this, MainActivity.class);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     startActivity(intent);
@@ -418,13 +422,13 @@ public class MainActivity extends Activity {
                                 int id =  Integer.parseInt(argJson.getStr("id")); // 获取widget id
                                 String action = argJson.getStr("action", "click"); // 获取操作类型
                                 String text = argJson.getStr("input_text", ""); // 获取输入文本
-                                if(MyAccessbilityService.isConnected()) {
+                                if(AgentAccessibilityService.isConnected()) {
                                     moveTaskToBack(true); // 最小化当前窗口
                                     handler.postDelayed(() -> {
-                                        MyAccessbilityService.staticThis.rootWidgetNode.performAction(id, action, text);
+                                        AgentAccessibilityService.staticThis.rootWidgetNode.performAction(id, action, text);
                                         handler.postDelayed(() -> {
-                                            JSONObject json = MyAccessbilityService.staticThis.getWidgetJson();
-                                            json.putOpt("package", MyAccessbilityService.staticThis.getCurrentPackageName());
+                                            JSONObject json = AgentAccessibilityService.staticThis.getWidgetJson();
+                                            json.putOpt("package", AgentAccessibilityService.staticThis.getCurrentPackageName());
                                             Intent intent = new Intent(MainActivity.this, MainActivity.class);
                                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                             startActivity(intent);
@@ -445,7 +449,16 @@ public class MainActivity extends Activity {
                                 Intent intent = getPackageManager().getLaunchIntentForPackage(packageName);
                                 if(intent != null) {
                                     startActivity(intent); // 启动应用
-                                    processFunctionResult(function, "OK");
+                                    handler.postDelayed(() -> {
+                                        if(packageName.equals(AgentAccessibilityService.staticThis.getCurrentPackageName())) {
+                                            Intent selfIntent = new Intent(MainActivity.this, MainActivity.class);
+                                            selfIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                            startActivity(selfIntent);
+                                            processFunctionResult(function, "OK");
+                                        } else {
+                                            processFunctionResult(function, "Error: failed to launch the package.");
+                                        }
+                                    }, 2000);
                                 } else {
                                     processFunctionResult(function, "Error: package not found.");
                                 }
@@ -614,6 +627,27 @@ public class MainActivity extends Activity {
             }
         });
 
+        // Agent模式按钮点击事件
+        (findViewById(R.id.cv_agent_mode)).setOnClickListener(view -> {
+            agentMode = !agentMode;
+            if(agentMode) {
+                if(AgentAccessibilityService.isConnected()) {
+                    ((CardView) findViewById(R.id.cv_agent_mode)).setForeground(getDrawable(R.drawable.agent_btn_enabled));
+                    GlobalUtils.showToast(this, R.string.toast_agent_on, false);
+                }else{
+                    agentMode = false;
+                    GlobalUtils.showToast(this, R.string.toast_agent_accessibility_off, false);
+                    Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
+                    startActivity(intent);
+                }
+            }else{
+                ((CardView) findViewById(R.id.cv_agent_mode)).setForeground(getDrawable(R.drawable.agent_btn));
+                GlobalUtils.showToast(this, R.string.toast_agent_off, false);
+            }
+            setAgentModeEnabled(agentMode);
+            GlobalDataHolder.saveAgentModeSetting(agentMode);
+        });
+
         // 历史按钮点击事件，跳转到历史记录页面
         (menuView.findViewById(R.id.cv_history)).setOnClickListener(view -> {
             pwMenu.dismiss();
@@ -652,6 +686,17 @@ public class MainActivity extends Activity {
         if(!GlobalDataHolder.getDefaultEnableTts()){
             ttsEnabled = false;
             ((CardView) findViewById(R.id.cv_tts_off)).setForeground(getDrawable(R.drawable.tts_off_enable));
+        }
+
+        // 上次开启了Agent模式
+        if(GlobalDataHolder.getAgentMode()){
+            if(AgentAccessibilityService.isConnected()){
+                agentMode = true;
+                ((CardView) findViewById(R.id.cv_agent_mode)).setForeground(getDrawable(R.drawable.agent_btn_enabled));
+            }else{
+                agentMode = false;
+                GlobalDataHolder.saveAgentModeSetting(false);
+            }
         }
 
         // 处理选中的模板
@@ -790,6 +835,14 @@ public class MainActivity extends Activity {
     private void setNetworkEnabled(boolean enabled) {
         if(enabled) {
             chatApiClient.addFunction("get_html_text", "get all innerText and links of a web page", "{url: {type: string, description: html url}}", new String[]{"url"});
+        } else {
+            chatApiClient.removeFunction("get_html_text");
+        }
+    }
+
+    // 设置是否启用Agent模式
+    private void setAgentModeEnabled(boolean enabled) {
+        if(enabled) {
             chatApiClient.addFunction("get_widget_tree", "get widget information tree on the screen", "{}", new String[]{});
             chatApiClient.addFunction("widget_action", "perform an action on a widget in widget tree and get new widget tree",
                     "{id: {type: string, description: widget id}," +
@@ -799,7 +852,6 @@ public class MainActivity extends Activity {
             chatApiClient.addFunction("launch_package", "launch a package by package name",
                     "{package: {type: string, description: package name}}", new String[]{"package"});
         } else {
-            chatApiClient.removeFunction("get_html_text");
             chatApiClient.removeFunction("get_widget_tree");
             chatApiClient.removeFunction("widget_action");
             chatApiClient.removeFunction("launch_package");
@@ -1050,6 +1102,7 @@ public class MainActivity extends Activity {
         Log.d("MainActivity", "switch template: params=" + currentTemplateParams);
         chatApiClient.setModel(currentTemplateParams.getStr("model", GlobalDataHolder.getGptModel()));
         setNetworkEnabled(currentTemplateParams.getBool("network", GlobalDataHolder.getEnableInternetAccess()));
+        setAgentModeEnabled(currentTemplateParams.getBool("agent", GlobalDataHolder.getAgentMode()));
         updateTabListView();
         updateTemplateParamsView();
     }

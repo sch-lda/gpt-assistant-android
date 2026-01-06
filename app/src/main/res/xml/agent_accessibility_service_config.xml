@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <accessibility-service
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:description="@string/key_accessibility_service_label"
+    android:description="@string/agent_accessibility_service_label"
     android:accessibilityEventTypes="typeAllMask"
     android:accessibilityFeedbackType="feedbackAllMask"
     android:notificationTimeout="100"
     android:settingsActivity="com.skythinker.gptassistant.TabConfActivity"
-    android:canRequestFilterKeyEvents="true"
-    android:accessibilityFlags="flagRequestFilterKeyEvents"/>
+    android:canRetrieveWindowContent="true"/>

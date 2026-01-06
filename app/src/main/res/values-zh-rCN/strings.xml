@@ -1,4 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+    <!--  无障碍服务说明  -->
+    <string name="key_accessibility_service_label">音量键唤起</string>
+    <string name="agent_accessibility_service_label">智能体模式</string>
     <!--  帮助说明  -->
     <string name="help_msg">
         以下为简要操作说明，详细说明可以在项目主页中查看。\n\n
@@ -124,6 +127,8 @@
     <string name="toast_multi_voice_on">进入连续语音对话</string>
     <string name="toast_multi_voice_off">连续语音对话已退出</string>
     <string name="toast_voice_chat_tts_off">请先打开语音播报开关</string>
+    <string name="toast_agent_on">智能体模式已开启</string>
+    <string name="toast_agent_off">智能体模式已关闭</string>
     <string name="dialog_custom_model_help_title">自定义模型说明</string>
     <string name="dialog_custom_model_help">可输入多个自定义模型名称，自定义模型也会显示在下拉列表中\n\n多个模型通过英文分号分隔，可在模型结尾添加星号表示支持识图功能\n\n示例：gpt-4o*;gpt-4-0613</string>
     <string name="text_gpt_conf_error">GPT客户端错误，请检查API配置</string>
@@ -139,4 +144,5 @@
     <string name="assist_label">询问GPT</string>
     <string name="text_temp_param_input_hint">请输入</string>
     <string name="toast_unsupported_file">不支持的文件：</string>
+    <string name="toast_agent_accessibility_off">请开启智能体模式无障碍服务</string>
 </resources>

@@ -1,6 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name" translatable="false">GPTAssistant</string>
-    <string name="accessibility_service_label" translatable="false">GPTAssistant</string>
     <string-array name="models">
         <item>gpt-3.5-turbo</item>
         <item>gpt-4</item>
@@ -37,6 +36,9 @@
     <string name="template_help_raw_url_gitee_zh" translatable="false">https://gitee.com/skythinker/gpt-assistant-android/raw/master/template_help.md</string>
     <!-- HMS语音识别API_KEY 已限制包名和签名 -->
     <string name="hms_api_key" translatable="false">DAEDADuGjMLeSU+tLR7t9Z3XEtc5TH45ztgfk9MyzlFy5ogpHIYiX1wL0fWyL9tS/Y7MzU9QK4vtZUvoo97OT4YcpG9BmxtgtQpWpw==</string>
+    <!--  无障碍服务说明  -->
+    <string name="key_accessibility_service_label">Volume Key Trigger</string>
+    <string name="agent_accessibility_service_label">Agent Mode</string>
     <!--  帮助说明  -->
     <string name="help_msg">
         Brief instructions below, see project homepage for more.\n\n
@@ -162,6 +164,8 @@
     <string name="toast_multi_voice_on">Continuous Voice Input On</string>
     <string name="toast_multi_voice_off">Continuous Voice Input Off</string>
     <string name="toast_voice_chat_tts_off">Please turn on voice output first</string>
+    <string name="toast_agent_on">Agent Mode On</string>
+    <string name="toast_agent_off">Agent Mode Off</string>
     <string name="dialog_custom_model_help_title">Custom Model Help</string>
     <string name="dialog_custom_model_help">Custom model names entered here will be appended to drop-down list. Use \';\' to separate different models and use \'*\' to indicate a vision model. \n\nExample: gpt-4o*;gpt-4-0613</string>
     <string name="text_gpt_conf_error">Please check GPT api configuration</string>
@@ -177,4 +181,5 @@
     <string name="assist_label">Ask GPT</string>
     <string name="text_temp_param_input_hint">Input here</string>
     <string name="toast_unsupported_file">Unsupported file: </string>
+    <string name="toast_agent_accessibility_off">Please enable Accessibility Services for Agent Mode</string>
 </resources>
