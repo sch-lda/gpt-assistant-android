@@ -67,17 +67,6 @@
                     app:cardElevation="0dp" />
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_multi_chat"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="5dp"
-                    android:foreground="@drawable/chat_btn"
-                    android:visibility="gone"
-                    app:cardBackgroundColor="#00000000"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="0dp" />
-
-                <androidx.cardview.widget.CardView
                     android:id="@+id/cv_tts_off"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
@@ -89,12 +78,12 @@
                     app:cardElevation="0dp" />
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_voice_chat"
+                    android:id="@+id/cv_network"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginLeft="5dp"
                     android:background="#FFFFFF"
-                    android:foreground="@drawable/voice_chat_btn"
+                    android:foreground="@drawable/network_btn"
                     app:cardBackgroundColor="#00DADADA"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="0dp" />

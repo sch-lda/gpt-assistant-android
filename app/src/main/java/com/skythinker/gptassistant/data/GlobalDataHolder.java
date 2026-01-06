@@ -31,6 +31,7 @@ public class GlobalDataHolder {
     private static String gptApiKey;
     private static String gptModel;
     private static float gptTemperature;
+    private static int gptMaxContextNum;
     private static List<String> customModels = null;
     private static boolean checkAccessOnStart;
     private static boolean defaultEnableTts;
@@ -178,12 +179,15 @@ public class GlobalDataHolder {
 
     public static void loadModelParams() {
         gptTemperature = sp.getFloat("model_temperature", 0.5f);
+        gptMaxContextNum = sp.getInt("max_context_num", 10);
     }
 
-    public static void saveModelParams(float temperature) {
+    public static void saveModelParams(float temperature, int maxContextNum) {
         gptTemperature = temperature;
+        gptMaxContextNum = maxContextNum;
         SharedPreferences.Editor editor = sp.edit();
         editor.putFloat("model_temperature", gptTemperature);
+        editor.putInt("max_context_num", gptMaxContextNum);
         editor.apply();
     }
 
@@ -326,6 +330,8 @@ public class GlobalDataHolder {
     public static List<String> getCustomModels() { return customModels; }
 
     public static float getGptTemperature() {return gptTemperature; }
+
+    public static int getGptMaxContextNum() { return gptMaxContextNum; }
 
     public static boolean getCheckAccessOnStart() { return checkAccessOnStart; }
 

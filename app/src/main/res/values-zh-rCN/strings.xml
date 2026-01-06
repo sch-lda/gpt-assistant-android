@@ -22,6 +22,7 @@
     <string name="conf_custom_model_item">自定义模型</string>
     <string name="conf_custom_model_tip">用分号隔开多个模型</string>
     <string name="conf_model_temperature">模型随机性</string>
+    <string name="conf_context_num">上下文长度</string>
     <string name="conf_asr_title">语音识别设置</string>
     <string name="conf_asr_subtitle">| 关闭下述接口则使用内置华为接口</string>
     <string name="conf_use_baidu_asr_item">使用百度接口</string>
@@ -36,8 +37,8 @@
     <string name="conf_enable_network_tip">开启会大幅增加Token用量</string>
     <string name="conf_web_max_char_item">单网页最大字符数</string>
     <string name="conf_web_max_char_tip">丢弃超出的字符以缩减Token</string>
-    <string name="conf_only_latest_web_item">仅发送最新数据</string>
-    <string name="conf_only_latest_web_tip">丢弃上方对话的网络数据以缩减Token</string>
+    <string name="conf_only_latest_web_item">仅发送最新网页</string>
+    <string name="conf_only_latest_web_tip">丢弃上方对话的网页数据以缩减Token</string>
     <string name="conf_others_title">其他选项</string>
     <string name="conf_set_access_item">设置无障碍模式</string>
     <string name="conf_startup_check_access_item">启动时检查无障碍</string>
@@ -127,6 +128,8 @@
     <string name="toast_multi_voice_on">进入连续语音对话</string>
     <string name="toast_multi_voice_off">连续语音对话已退出</string>
     <string name="toast_voice_chat_tts_off">请先打开语音播报开关</string>
+    <string name="toast_network_on">联网模式已开启</string>
+    <string name="toast_network_off">联网模式已关闭</string>
     <string name="toast_agent_on">智能体模式已开启</string>
     <string name="toast_agent_off">智能体模式已关闭</string>
     <string name="dialog_custom_model_help_title">自定义模型说明</string>

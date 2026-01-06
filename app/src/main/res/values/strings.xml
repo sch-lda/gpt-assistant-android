@@ -59,6 +59,7 @@
     <string name="conf_custom_model_item">Custom Models</string>
     <string name="conf_custom_model_tip">Separate models with \';\'</string>
     <string name="conf_model_temperature">Temperature</string>
+    <string name="conf_context_num">Context Length</string>
     <string name="conf_asr_title">Speech Recognition Settings</string>
     <string name="conf_asr_subtitle">| Disabling all will use built-in HMS service</string>
     <string name="conf_use_baidu_asr_item">Use Baidu Service</string>
@@ -164,6 +165,8 @@
     <string name="toast_multi_voice_on">Continuous Voice Input On</string>
     <string name="toast_multi_voice_off">Continuous Voice Input Off</string>
     <string name="toast_voice_chat_tts_off">Please turn on voice output first</string>
+    <string name="toast_network_on">Internet Access On</string>
+    <string name="toast_network_off">Internet Access Off</string>
     <string name="toast_agent_on">Agent Mode On</string>
     <string name="toast_agent_off">Agent Mode Off</string>
     <string name="dialog_custom_model_help_title">Custom Model Help</string>

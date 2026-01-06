@@ -50,7 +50,7 @@ public class PromptTabData implements Serializable {
                     value = value.trim();
                     if (name.equals("model")) { // 文本型参数
                         params.putOpt(name, value);
-                    } else if (Arrays.asList("system", "speak", "chat", "network").contains(name)) { // 布尔型参数
+                    } else if (Arrays.asList("system", "speak", "chat", "network", "agent").contains(name)) { // 布尔型参数
                         params.putOpt(name, value.equals("true"));
                     } else if (name.equals("input")) { // 输入型参数 {inputName: {type: "text"}}
                         inputObject.putOpt(value, new JSONObject().putOpt("type", "text"));
