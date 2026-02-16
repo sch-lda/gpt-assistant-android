@@ -1,8 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name" translatable="false">GPTAssistant</string>
     <string-array name="models">
-        <item>gpt-5-mini</item>
+        <item>gpt-3.5-turbo</item>
+        <item>gpt-4</item>
+        <item>gpt-4-turbo</item>
+        <item>gpt-4o</item>
+        <item>gpt-4o-mini</item>
         <item>gpt-5.2</item>
+        <item>gpt-5-mini</item>
+        <item>gpt-5-nano</item>
     </string-array>
     <!--  在线资源Url  -->
     <string name="homepage_url_github" translatable="false">https://github.com/Skythinker616/gpt-assistant-android</string>
