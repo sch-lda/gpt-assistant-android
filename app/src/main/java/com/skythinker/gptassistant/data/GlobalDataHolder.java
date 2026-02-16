@@ -178,7 +178,7 @@ public class GlobalDataHolder {
     }
 
     public static void loadModelParams() {
-        gptTemperature = sp.getFloat("model_temperature", 0.5f);
+        gptTemperature = sp.getFloat("model_temperature", 1.0f);
         gptMaxContextNum = sp.getInt("max_context_num", 10);
     }
 

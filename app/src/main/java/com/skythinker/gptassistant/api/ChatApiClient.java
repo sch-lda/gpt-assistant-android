@@ -154,12 +154,14 @@ public class ChatApiClient {
                         .tools(functions)
                         .toolChoice(ToolChoice.Choice.AUTO.getName())
                         .temperature(temperature)
+                        .maxTokens(null)
                         .build();
             } else {
                 chatCompletion = ChatCompletion.builder()
                         .messages(messageList)
                         .model(model.replaceAll("\\*$","")) // 去掉自定义模型结尾的*号
                         .temperature(temperature)
+                        .maxTokens(null)
                         .build();
             }
         } else { // 含有附件，使用contentList格式
@@ -233,12 +235,14 @@ public class ChatApiClient {
                         .tools(functions)
                         .toolChoice(ToolChoice.Choice.AUTO.getName())
                         .temperature(temperature)
+                        .maxTokens(null)
                         .build();
             } else {
                 chatCompletion = ChatCompletionWithPicture.builder()
                         .messages(messageList)
                         .model(model.replaceAll("\\*$","")) // 去掉自定义Vision模型结尾的*号
                         .temperature(temperature)
+                        .maxTokens(null)
                         .build();
             }
         }
