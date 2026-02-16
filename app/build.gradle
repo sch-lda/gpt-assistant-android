@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId "com.skythinker.gptassistant"
         minSdk 26
-        targetSdk 32
+        targetSdk 33
         versionCode 22
         versionName "2.0.1"
 
@@ -26,17 +26,21 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     packagingOptions {
+        jniLibs {
+            useLegacyPackaging true
+        }
         resources.excludes.add('META-INF/INDEX.LIST')
-    }
-    lintOptions {
-        abortOnError false
-        absolutePaths false
-        baseline file("lint-baseline.xml")
     }
     configurations {
         all {
             exclude group: 'org.jetbrains', module: 'annotations'
         }
+    }
+    namespace 'com.skythinker.gptassistant'
+    lint {
+        abortOnError false
+        absolutePaths false
+        baseline file('lint-baseline.xml')
     }
 }
 
